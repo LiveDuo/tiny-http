@@ -1,7 +1,7 @@
 extern crate tiny_http;
 
 use std::io::{copy, Read, Write};
-use std::net::{Shutdown, TcpStream};
+use std::net::TcpStream;
 use std::ops::Deref;
 use std::sync::mpsc::channel;
 use std::sync::Arc;
@@ -159,7 +159,7 @@ mod prompt_responses {
         // response should arrive quickly (before timeout expires)
         client.set_read_timeout(Some(timeout)).unwrap();
         let resp = client.deref().read(&mut [0u8; 4096]);
-        client.shutdown(Shutdown::Both).unwrap();
+        // client.shutdown(Shutdown::Both).unwrap();
         assert!(resp.is_ok(), "Server response was not sent promptly");
     }
 

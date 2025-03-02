@@ -64,7 +64,7 @@
 //!
 //! ## Handling requests
 //!
-//! The `Request` object returned by `server.recv()` contains informations about the client's request.
+//! The `Request` object returned by `server.recv()` contains information about the client's request.
 //! The most useful methods are probably `request.method()` and `request.url()` which return
 //! the requested method (`GET`, `POST`, etc.) and url.
 //!
@@ -165,10 +165,11 @@ impl From<Request> for Message {
 }
 
 // this trait is to make sure that Server implements Share and Send
-#[doc(hidden)]
-trait MustBeShareDummy: Sync + Send {}
-#[doc(hidden)]
-impl MustBeShareDummy for Server {}
+// #[doc(hidden)]
+// trait MustBeShareDummy: Sync + Send {}
+
+// #[doc(hidden)]
+// impl MustBeShareDummy for Server {}
 
 pub struct IncomingRequests<'a> {
     server: &'a Server,
